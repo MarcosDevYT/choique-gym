@@ -76,7 +76,14 @@ export function Hero({ gym }: { gym: GymProfile }) {
       className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden pt-20"
     >
       <Container className="py-[clamp(1.5rem,4vh,3.5rem)]">
-        <div className="grid items-end gap-[clamp(1.5rem,3vh,2.5rem)] lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
+        {/*
+          La columna de la foto es más angosta que la del texto a propósito.
+          Repartido en partes casi iguales, la foto quedaba en 2.26:1 — más
+          panorámica que un video — y no había forma de compensarlo con alto
+          porque el hero tiene que entrar en una pantalla. Angostarla arregla
+          la proporción sin gastar presupuesto vertical.
+        */}
+        <div className="grid items-end gap-[clamp(1.5rem,3vh,2.5rem)] lg:grid-cols-[1.3fr_0.7fr] lg:gap-12">
           <div>
             <p className="hero-fade eyebrow mb-[clamp(0.75rem,2vh,1.75rem)] flex items-center gap-2.5 text-lime">
               <span className="size-1.5 rounded-full bg-lime" aria-hidden />
@@ -129,7 +136,7 @@ export function Hero({ gym }: { gym: GymProfile }) {
             crecer.
           */}
           <div className="hero-fade relative">
-            <div className="h-[clamp(9rem,22vh,16rem)] overflow-hidden rounded-2xl lg:h-[clamp(13rem,38vh,30rem)]">
+            <div className="h-[clamp(9rem,22vh,16rem)] overflow-hidden rounded-2xl lg:h-[clamp(15rem,45vh,34rem)]">
               <PhotoSlot
                 alt={`Entrenamiento en ${gym.legalName}`}
                 hint="Foto de la sala entrenando"
