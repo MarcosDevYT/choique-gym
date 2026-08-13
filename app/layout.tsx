@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { archivo, archivoBlack } from "@/lib/fonts";
+import { anton, archivo } from "@/lib/fonts";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { getGym } from "@/lib/data";
 import "./globals.css";
@@ -45,7 +45,7 @@ export default function RootLayout({
   return (
     <html
       lang="es-AR"
-      className={`${archivo.variable} ${archivoBlack.variable}`}
+      className={`${archivo.variable} ${anton.variable}`}
     >
       <body>
         <SmoothScroll>{children}</SmoothScroll>

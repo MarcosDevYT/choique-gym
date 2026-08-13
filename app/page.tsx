@@ -3,24 +3,37 @@ import { SiteFooter } from "@/components/site-footer";
 import { Hero } from "@/components/sections/hero";
 import { Marquee } from "@/components/sections/marquee";
 import { Services } from "@/components/sections/services";
-import { About } from "@/components/sections/about";
+import { StatsBand } from "@/components/sections/stats-band";
+import { Method } from "@/components/sections/method";
 import { Testimonials } from "@/components/sections/testimonials";
 import { Location } from "@/components/sections/location";
 import { CallToAction } from "@/components/sections/cta";
-import { getFeatures, getGym, getSchedule, getServices, getTestimonials } from "@/lib/data";
+import {
+  getGym,
+  getMethodPoints,
+  getSchedule,
+  getServices,
+  getStats,
+  getTestimonials,
+} from "@/lib/data";
 import { buildJsonLd } from "@/lib/seo";
 
 /**
  * Toda la data se lee acá y baja por props. Cuando se conecte NeonDB, estas
  * llamadas pasan a ser `await` de las queries de Prisma y las secciones no
  * cambian: ya reciben todo desde afuera.
+ *
+ * El orden alterna densidad y respiro: hero → ticker → cards → banda lima →
+ * método → opiniones → mapa → cierre en claro. Ese último corte de luminancia
+ * es el que hace que el CTA final pegue después de toda la página en negro.
  */
 export default function Home() {
   const gym = getGym();
   const services = getServices();
   const testimonials = getTestimonials();
-  const features = getFeatures();
   const schedule = getSchedule();
+  const stats = getStats();
+  const methodPoints = getMethodPoints();
 
   const jsonLd = buildJsonLd({ gym, services, schedule });
 
@@ -38,7 +51,8 @@ export default function Home() {
         <Hero gym={gym} />
         <Marquee services={services} />
         <Services services={services} />
-        <About gym={gym} features={features} />
+        <StatsBand stats={stats} />
+        <Method gym={gym} points={methodPoints} />
         <Testimonials testimonials={testimonials} gym={gym} />
         <Location gym={gym} schedule={schedule} />
         <CallToAction gym={gym} />

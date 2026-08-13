@@ -17,12 +17,12 @@ export function Location({
   const mapSrc = `https://maps.google.com/maps?q=${gym.lat},${gym.lng}&z=16&output=embed`;
 
   return (
-    <section id="ubicacion" className="border-t border-line bg-surface py-24 sm:py-32">
+    <section id="ubicacion" className="border-t border-line bg-surface py-20 sm:py-28">
       <Container>
         <div className="mb-14 max-w-2xl">
-          <p className="mb-5 text-xs uppercase tracking-[0.26em] text-lime">Dónde estamos</p>
+          <p className="eyebrow mb-6 text-lime">Dónde estamos</p>
           <SplitLines>
-            <h2 className="font-display text-[clamp(2rem,5.5vw,4.2rem)] font-extrabold uppercase leading-[0.98] tracking-[-0.025em]">
+            <h2 className="display text-[clamp(2.4rem,6vw,4.8rem)]">
               Av. Roca y Charcas
             </h2>
           </SplitLines>
@@ -48,7 +48,7 @@ export function Location({
               <div className="flex gap-4 p-7">
                 <MapPin size={20} className="mt-0.5 shrink-0 text-lime" aria-hidden />
                 <div>
-                  <h3 className="text-sm uppercase tracking-[0.16em] text-faint">Dirección</h3>
+                  <h3 className="eyebrow text-faint">Dirección</h3>
                   <p className="mt-2 text-lg text-fg">{gym.address}</p>
                   <p className="text-base text-muted">
                     {gym.addressDetail} — {gym.city}, {gym.region}
@@ -61,7 +61,7 @@ export function Location({
               <div className="flex gap-4 p-7">
                 <Clock size={20} className="mt-0.5 shrink-0 text-lime" aria-hidden />
                 <div className="w-full">
-                  <h3 className="text-sm uppercase tracking-[0.16em] text-faint">Horarios</h3>
+                  <h3 className="eyebrow text-faint">Horarios</h3>
                   <dl className="mt-3 flex flex-col gap-2">
                     {schedule.map((day) => (
                       <div key={day.id} className="flex items-baseline justify-between gap-4">
@@ -80,7 +80,7 @@ export function Location({
               <div className="flex gap-4 p-7">
                 <Phone size={20} className="mt-0.5 shrink-0 text-lime" aria-hidden />
                 <div>
-                  <h3 className="text-sm uppercase tracking-[0.16em] text-faint">Contacto</h3>
+                  <h3 className="eyebrow text-faint">Contacto</h3>
                   <a
                     href={`tel:${gym.phone.replace(/[^\d+]/g, "")}`}
                     className="mt-2 block text-lg text-fg transition-colors hover:text-lime"

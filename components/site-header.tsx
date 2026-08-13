@@ -44,7 +44,7 @@ export function SiteHeader({ gym }: { gym: GymProfile }) {
         <Container className="flex h-20 items-center justify-between">
           <a
             href="#inicio"
-            className="font-display text-xl font-extrabold uppercase tracking-tight"
+            className="display text-xl"
           >
             {gym.name}
             <span className="text-lime">.</span>
@@ -67,7 +67,7 @@ export function SiteHeader({ gym }: { gym: GymProfile }) {
               href={`https://wa.me/${gym.whatsapp}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden rounded-full bg-lime px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-bg transition-transform duration-300 hover:scale-[1.04] sm:inline-flex"
+              className="hidden rounded-full bg-lime px-6 py-2.5 text-sm font-bold uppercase tracking-wide text-black transition-transform duration-300 hover:scale-[1.04] sm:inline-flex"
             >
               Sumate
             </a>
@@ -98,7 +98,7 @@ export function SiteHeader({ gym }: { gym: GymProfile }) {
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="font-display border-b border-line py-5 text-3xl font-bold uppercase tracking-tight transition-colors hover:text-lime"
+                className="display border-b border-line py-5 text-4xl transition-colors hover:text-lime"
               >
                 {link.label}
               </a>
@@ -108,7 +108,7 @@ export function SiteHeader({ gym }: { gym: GymProfile }) {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setOpen(false)}
-              className="mt-8 inline-flex justify-center rounded-full bg-lime px-8 py-4 text-sm font-semibold uppercase tracking-wide text-bg"
+              className="mt-8 inline-flex justify-center rounded-full bg-lime px-8 py-4 text-sm font-bold uppercase tracking-wide text-black"
             >
               Escribinos por WhatsApp
             </a>

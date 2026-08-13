@@ -48,6 +48,11 @@ export interface Service {
   /** Nombre del ícono de lucide-react que representa la disciplina. */
   icon: string;
   intensity: Intensity;
+  /** Metadatos que se muestran al pie de la card. */
+  frequency: string;
+  duration: string;
+  /** La destacada se pinta en lima y lleva la etiqueta de más elegida. */
+  featured: boolean;
   active: boolean;
   order: number;
 }
@@ -80,5 +85,20 @@ export interface ScheduleDay {
   /** Días de la semana en formato Schema.org, para los datos estructurados. */
   daysOfWeek: string[];
   active: boolean;
+  order: number;
+}
+
+/** Números de la banda lima. Van cortos: la banda se lee de un vistazo. */
+export interface Stat {
+  id: string;
+  value: string;
+  label: string;
+  order: number;
+}
+
+/** Punto con tilde de la sección del método. */
+export interface MethodPoint {
+  id: string;
+  text: string;
   order: number;
 }

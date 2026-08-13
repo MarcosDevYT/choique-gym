@@ -3,14 +3,7 @@ import { Container } from "@/components/container";
 import { Reveal, SplitLines } from "@/components/motion";
 import type { Service } from "@/lib/types";
 
-/** El ícono llega como string desde los datos, para que sea editable sin tocar código. */
-const ICONS: Record<string, LucideIcon> = {
-  Dumbbell,
-  Activity,
-  Swords,
-  Flame,
-  Sparkles,
-};
+const ICONS: Record<string, LucideIcon> = { Dumbbell, Activity, Swords, Flame, Sparkles };
 
 const INTENSITY_LABEL: Record<Service["intensity"], string> = {
   BAJA: "Bajo impacto",
@@ -18,50 +11,88 @@ const INTENSITY_LABEL: Record<Service["intensity"], string> = {
   ALTA: "Alta intensidad",
 };
 
+/**
+ * Cards de disciplinas. La destacada se pinta en lima entera con el texto en
+ * negro: en una grilla donde todo pesa igual el ojo no sabe por dónde entrar,
+ * y esa card es la que orienta la decisión.
+ */
 export function Services({ services }: { services: Service[] }) {
   return (
-    <section id="disciplinas" className="py-24 sm:py-32">
+    <section id="disciplinas" className="py-20 sm:py-28">
       <Container>
-        <div className="mb-16 flex flex-col gap-6 border-t border-line pt-10 lg:flex-row lg:items-end lg:justify-between">
-          <div>
-            <p className="mb-5 text-xs uppercase tracking-[0.26em] text-lime">Qué vas a encontrar</p>
-            <SplitLines>
-              <h2 className="font-display max-w-[14ch] text-[clamp(2rem,5.5vw,4.2rem)] font-extrabold uppercase leading-[0.98] tracking-[-0.025em]">
-                Cinco formas de entrenar
-              </h2>
-            </SplitLines>
-          </div>
+        <div className="mb-12 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <SplitLines>
+            <h2 className="display max-w-[11ch] text-[clamp(2.6rem,7vw,5.5rem)]">
+              Elegí tu disciplina
+            </h2>
+          </SplitLines>
           <Reveal y={16}>
-            <p className="max-w-sm text-base leading-relaxed text-muted">
-              Una sola cuota para probar todas. Empezá por la que te llame y cambiá
+            <p className="max-w-xs text-base leading-relaxed text-muted">
+              Una sola cuota para las cinco. Probá hasta encontrar la tuya y cambiá
               cuando quieras.
             </p>
           </Reveal>
         </div>
 
-        <div className="grid gap-px overflow-hidden rounded-3xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service, i) => {
             const Icon = ICONS[service.icon] ?? Dumbbell;
+            const featured = service.featured;
+
             return (
-              <Reveal key={service.id} y={22} delay={(i % 3) * 0.07} className="bg-bg">
-                <article className="group flex h-full flex-col gap-5 p-8 transition-colors duration-300 hover:bg-elevated lg:p-10">
+              <Reveal key={service.id} y={22} delay={(i % 3) * 0.06}>
+                <article
+                  className={`flex h-full flex-col rounded-2xl p-7 transition-colors duration-300 ${
+                    featured
+                      ? "bg-lime text-black"
+                      : "border border-line bg-surface hover:border-line-strong"
+                  }`}
+                >
                   <div className="flex items-start justify-between gap-4">
-                    <span className="flex size-12 items-center justify-center rounded-full border border-line-strong text-lime transition-colors duration-300 group-hover:border-lime group-hover:bg-lime group-hover:text-bg">
-                      <Icon size={20} strokeWidth={1.75} aria-hidden />
+                    <span
+                      className={`flex size-11 items-center justify-center rounded-xl ${
+                        featured ? "bg-black/10 text-black" : "bg-elevated text-lime"
+                      }`}
+                    >
+                      <Icon size={19} strokeWidth={2} aria-hidden />
                     </span>
-                    <span className="text-[11px] uppercase tracking-[0.18em] text-faint">
-                      {INTENSITY_LABEL[service.intensity]}
-                    </span>
+                    {featured && (
+                      <span className="eyebrow rounded-full bg-black px-3 py-1.5 text-lime">
+                        La más elegida
+                      </span>
+                    )}
                   </div>
 
-                  <div>
-                    <h3 className="font-display text-2xl font-bold uppercase tracking-tight">
-                      {service.name}
-                    </h3>
-                    <p className="mt-1 text-sm text-lime">{service.summary}</p>
-                  </div>
+                  <h3 className="display mt-7 text-[1.9rem]">{service.name}</h3>
+                  <p
+                    className={`mt-2.5 text-[0.95rem] leading-relaxed ${
+                      featured ? "text-black/75" : "text-muted"
+                    }`}
+                  >
+                    {service.description}
+                  </p>
 
-                  <p className="text-base leading-relaxed text-muted">{service.description}</p>
+                  {/* Fila de metadatos al pie: lo primero que se compara entre cards. */}
+                  <dl
+                    className={`mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 border-t pt-4 ${
+                      featured ? "border-black/15" : "border-line"
+                    }`}
+                  >
+                    {[
+                      { k: "Frecuencia", v: service.frequency },
+                      { k: "Formato", v: service.duration },
+                      { k: "Nivel", v: INTENSITY_LABEL[service.intensity] },
+                    ].map((meta) => (
+                      <div key={meta.k} className="flex items-baseline gap-1.5">
+                        <dt className="sr-only">{meta.k}</dt>
+                        <dd
+                          className={`eyebrow ${featured ? "text-black/60" : "text-faint"}`}
+                        >
+                          {meta.v}
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
                 </article>
               </Reveal>
             );

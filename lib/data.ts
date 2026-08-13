@@ -1,8 +1,10 @@
 import type {
   Feature,
   GymProfile,
+  MethodPoint,
   ScheduleDay,
   Service,
+  Stat,
   Testimonial,
 } from "@/lib/types";
 
@@ -23,14 +25,14 @@ export const gym: GymProfile = {
   name: "Choique",
   legalName: "Choique — Fitness & Gym",
   tagline: "Una experiencia de entrenamiento diferente",
-  heroTitle: "Entrená\ndonde el *esfuerzo*\nse nota",
+  heroTitle: "Entrenar\nen serio.\n*Sin vueltas.*",
   heroSubtitle:
     "Musculación, funcional y disciplinas de combate en el corazón de Puerto Madryn. Equipamiento nuevo, profesores en sala y un lugar que da ganas de volver.",
   about: [
     "Choique nació con una idea simple: que entrenar no se sienta una obligación. Un espacio amplio, limpio y bien equipado, donde cada persona encuentra su ritmo — desde quien pisa un gimnasio por primera vez hasta quien entrena hace años.",
     "Somos parte de la familia Sport Club, y eso se nota en el estándar: máquinas nuevas, mantenimiento al día y profesores en sala corrigiendo técnica, no mirando el celular.",
   ],
-  claim: "Tu primera clase es la más difícil. El resto lo hacemos fácil.",
+  claim: "La primera clase\nes la más difícil.\n*El resto lo hacemos fácil.*",
   phone: "0280 435-3089",
   whatsapp: "5492804353089",
   instagram: "https://instagram.com/choique.gym",
@@ -60,6 +62,9 @@ export const services: Service[] = [
       "Máquinas y peso libre para trabajar fuerza e hipertrofia a tu ritmo, con profesores en sala que te arman la rutina y te corrigen la técnica.",
     icon: "Dumbbell",
     intensity: "MEDIA",
+    frequency: "Libre",
+    duration: "Sala completa",
+    featured: false,
     active: true,
     order: 0,
   },
@@ -72,6 +77,9 @@ export const services: Service[] = [
       "Entrenamiento con el peso corporal: dominadas, fondos, progresiones y control. Ganás fuerza real, movilidad y coordinación sin depender de máquinas.",
     icon: "Activity",
     intensity: "ALTA",
+    frequency: "3x / semana",
+    duration: "Progresiones",
+    featured: false,
     active: true,
     order: 1,
   },
@@ -84,6 +92,9 @@ export const services: Service[] = [
       "Clases de boxeo con trabajo de guardia, desplazamiento y combinaciones. Cardio intenso, coordinación fina y una de las mejores formas de descargar la semana.",
     icon: "Swords",
     intensity: "ALTA",
+    frequency: "2x / semana",
+    duration: "Clases de 60′",
+    featured: true,
     active: true,
     order: 2,
   },
@@ -96,6 +107,9 @@ export const services: Service[] = [
       "Suma patadas y trabajo de piernas al golpeo. Una clase completa que mezcla técnica de combate con acondicionamiento físico de alta intensidad.",
     icon: "Flame",
     intensity: "ALTA",
+    frequency: "2x / semana",
+    duration: "Clases de 60′",
+    featured: false,
     active: true,
     order: 3,
   },
@@ -108,6 +122,9 @@ export const services: Service[] = [
       "Trabajo de bajo impacto que combina barra, elementos de danza y pilates. Tonifica en profundidad, mejora la postura y cuida las articulaciones.",
     icon: "Sparkles",
     intensity: "BAJA",
+    frequency: "2x / semana",
+    duration: "Bajo impacto",
+    featured: false,
     active: true,
     order: 4,
   },
@@ -234,6 +251,22 @@ export const schedule: ScheduleDay[] = [
   },
 ];
 
+/** Números de la banda lima. Todos verificables en Google o Instagram. */
+export const stats: Stat[] = [
+  { id: "rating", value: "5.0", label: "Puntuación en Google", order: 0 },
+  { id: "resenas", value: "22", label: "Reseñas de alumnos", order: 1 },
+  { id: "comunidad", value: "4.7K", label: "En la comunidad", order: 2 },
+  { id: "disciplinas", value: "5", label: "Disciplinas", order: 3 },
+];
+
+/** Lo que repiten las reseñas, convertido en promesas concretas. */
+export const methodPoints: MethodPoint[] = [
+  { id: "tecnica", text: "Profesores en sala corrigiendo técnica, no mirando el celular", order: 0 },
+  { id: "maquinas", text: "Máquinas nuevas y mantenimiento rápido: si algo se rompe, se arregla", order: 1 },
+  { id: "espacio", text: "Salón amplio y limpio, cómodo incluso en horario pico", order: 2 },
+  { id: "cuota", text: "Una sola cuota para las cinco disciplinas, sin adicionales", order: 3 },
+];
+
 // ── Lecturas ────────────────────────────────────────────────────────────────
 // Mismas firmas que van a tener las queries de Prisma, así el reemplazo es
 // cambiar el cuerpo de estas funciones y nada más.
@@ -247,3 +280,5 @@ export const getFeatures = () =>
   features.filter((f) => f.active).sort((a, b) => a.order - b.order);
 export const getSchedule = () =>
   schedule.filter((d) => d.active).sort((a, b) => a.order - b.order);
+export const getStats = () => [...stats].sort((a, b) => a.order - b.order);
+export const getMethodPoints = () => [...methodPoints].sort((a, b) => a.order - b.order);

@@ -1,24 +1,27 @@
 @import "tailwindcss";
 
 /*
-  Paleta de la marca: lima sobre negro puro. El lima es altísimo en luminancia
-  (contraste 17:1 sobre negro), así que funciona para texto grande y CTAs, pero
-  satura la vista si se usa en bloques — se reserva para acentos y acciones.
+  Paleta de la marca: lima sobre negro. El lima está a 17:1 sobre negro, así
+  que soporta usarse en bloque — y ahí es donde tiene fuerza: bandas enteras
+  con el texto en negro encima, no solo palabras sueltas de color.
+
+  El crema existe para un único corte al final: después de toda la página en
+  negro, una sección clara hace que el cierre pegue.
 */
 @theme {
   --color-bg: #000000;
-  --color-surface: #0b0b0b;
-  --color-elevated: #141414;
-  --color-line: #232323;
-  --color-line-strong: #333333;
+  --color-surface: #0c0c0c;
+  --color-elevated: #161616;
+  --color-line: #242424;
+  --color-line-strong: #3a3a3a;
   --color-fg: #f5f5f5;
   --color-muted: #a1a1a1;
   --color-faint: #7a7a7a;
   --color-lime: #c0fd1a;
-  --color-lime-dim: #93c214;
+  --color-cream: #f2f2ee;
 
   --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-archivo-black), var(--font-archivo), sans-serif;
+  --font-display: var(--font-anton), var(--font-archivo), sans-serif;
 }
 
 html {
@@ -50,12 +53,33 @@ summary {
 
 ::selection {
   background-color: var(--color-lime);
-  color: var(--color-bg);
+  color: #000;
 }
 
 :focus-visible {
   outline: 2px solid var(--color-lime);
   outline-offset: 3px;
+}
+
+/*
+  Titulares: Anton ya viene condensada, pero necesita que le cierren el
+  interlineado y el tracking para que el bloque se lea como un cartel macizo.
+  Se centraliza acá para no repetir seis clases en cada sección.
+*/
+.display {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  line-height: 0.88;
+  letter-spacing: -0.015em;
+  font-weight: 400;
+}
+
+/* Etiqueta chica en mayúscula, para rótulos y metadatos. */
+.eyebrow {
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-weight: 600;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -70,9 +94,9 @@ summary {
 }
 
 /*
-  Marquesina de la tira de disciplinas. Va en CSS y no en GSAP porque es un
-  bucle infinito puro: no necesita scroll ni estado, y así no consume frames
-  del ticker ni se rompe si JS tarda.
+  Ticker. Va en CSS y no en GSAP porque es un bucle infinito puro: no depende
+  del scroll ni de estado, así no consume frames del ticker de GSAP ni se
+  rompe si el JS tarda en cargar.
 */
 @keyframes marquee {
   from {
@@ -83,7 +107,7 @@ summary {
   }
 }
 .marquee-track {
-  animation: marquee 32s linear infinite;
+  animation: marquee 30s linear infinite;
 }
 @media (prefers-reduced-motion: reduce) {
   .marquee-track {

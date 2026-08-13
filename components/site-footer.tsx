@@ -15,7 +15,7 @@ export function SiteFooter({
       <Container>
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-2">
-            <p className="font-display text-3xl font-extrabold uppercase tracking-tight">
+            <p className="display text-4xl">
               {gym.name}
               <span className="text-lime">.</span>
             </p>
@@ -23,7 +23,7 @@ export function SiteFooter({
           </div>
 
           <nav aria-label="Disciplinas">
-            <h2 className="text-xs uppercase tracking-[0.2em] text-faint">Disciplinas</h2>
+            <h2 className="eyebrow text-faint">Disciplinas</h2>
             <ul className="mt-4 flex flex-col gap-2">
               {services.map((service) => (
                 <li key={service.id}>
@@ -39,7 +39,7 @@ export function SiteFooter({
           </nav>
 
           <div>
-            <h2 className="text-xs uppercase tracking-[0.2em] text-faint">Contacto</h2>
+            <h2 className="eyebrow text-faint">Contacto</h2>
             <ul className="mt-4 flex flex-col gap-3 text-base text-muted">
               <li>
                 <a

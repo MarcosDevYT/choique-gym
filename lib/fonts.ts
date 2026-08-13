@@ -1,22 +1,23 @@
-import { Archivo, Archivo_Black } from "next/font/google";
+import { Anton, Archivo } from "next/font/google";
 
 /**
- * Archivo para todo el cuerpo y Archivo Black para los titulares.
+ * Anton para los titulares: condensada, pesadísima y de una sola caja. En
+ * mayúscula y a tamaño grande ocupa el ancho como un cartel — el registro
+ * físico que pide un gimnasio. Es la diferencia entre un titular que se lee
+ * y uno que golpea.
  *
- * Archivo es una grotesca de origen editorial: tiene carácter sin caer en la
- * tipografía "deportiva" genérica. Archivo Black es su corte display, con el
- * peso justo para que los titulares en mayúscula tengan presencia física —
- * el registro que pide un gimnasio.
+ * Archivo para todo lo demás: grotesca neutra que aguanta bien los textos
+ * chicos en mayúscula de las etiquetas y metadatos.
  */
+export const anton = Anton({
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+  variable: "--font-anton",
+});
+
 export const archivo = Archivo({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-archivo",
-});
-
-export const archivoBlack = Archivo_Black({
-  subsets: ["latin"],
-  weight: "400",
-  display: "swap",
-  variable: "--font-archivo-black",
 });
