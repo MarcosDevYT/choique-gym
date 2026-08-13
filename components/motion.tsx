@@ -11,7 +11,14 @@ if (typeof window !== "undefined") {
 }
 
 /**
- * Revela un titular línea por línea con máscara.
+ * Revela un titular línea por línea.
+ *
+ * Va SIN `mask` a propósito. La máscara envuelve cada línea en un contenedor
+ * con overflow:hidden del alto exacto de la línea, y con el interlineado
+ * apretado de Anton eso recorta la punta de los acentos de forma permanente
+ * (haría falta 1.36 de interlineado para que no pase, y a esa altura el
+ * titular deja de leerse como cartel). Sin máscara, las líneas entran con
+ * desplazamiento y opacidad: nada se corta, a ningún tamaño.
  *
  * El SplitText se crea diferido con requestAnimationFrame, fuera del contexto
  * síncrono de useGSAP: si se crea adentro, GSAP lo trackea y lo auto-revierte
@@ -46,12 +53,12 @@ export function SplitLines({
 
         const split = SplitText.create(el, {
           type: "lines",
-          mask: "lines",
           linesClass: "line++",
         });
-        gsap.set(split.lines, { yPercent: 110 });
+        gsap.set(split.lines, { yPercent: 40, opacity: 0 });
         gsap.to(split.lines, {
           yPercent: 0,
+          opacity: 1,
           duration: 0.9,
           stagger,
           delay,

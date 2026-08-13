@@ -66,10 +66,20 @@ summary {
   interlineado y el tracking para que el bloque se lea como un cartel macizo.
   Se centraliza acá para no repetir seis clases en cada sección.
 */
+/*
+  Titulares. El interlineado es lo más delicado de esta tipografía:
+
+  En Anton la altura de mayúscula es 0.86em pero una vocal acentuada llega a
+  1.10em — el acento suma casi un cuarto de cuerpo. Sumando la colita de la Q
+  (0.09em), dos líneas solo dejan de tocarse a partir de 1.195.
+
+  1.24 deja unos pocos píxeles de aire por encima de ese mínimo y sigue
+  leyéndose como cartel: el interlineado de un texto normal es 1.5.
+*/
 .display {
   font-family: var(--font-display);
   text-transform: uppercase;
-  line-height: 0.88;
+  line-height: 1.24;
   letter-spacing: -0.015em;
   font-weight: 400;
 }
@@ -106,8 +116,14 @@ summary {
     transform: translateX(-50%);
   }
 }
+/*
+  La duración tiene que ir de la mano del largo de la tira: el recorrido es
+  siempre -50%, así que si la tira se alarga y la duración no cambia, la
+  velocidad sube en la misma proporción. Con cinco repeticiones por mitad,
+  150s dan el mismo ritmo tranquilo que tenía la tira corta a 30s.
+*/
 .marquee-track {
-  animation: marquee 30s linear infinite;
+  animation: marquee 150s linear infinite;
 }
 @media (prefers-reduced-motion: reduce) {
   .marquee-track {

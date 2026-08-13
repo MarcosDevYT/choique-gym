@@ -38,16 +38,17 @@ export function Hero({ gym }: { gym: GymProfile }) {
         if (cancelled || !title || title.dataset.split === "true") return;
         title.dataset.split = "true";
 
+        // Sin máscara: recortaría la punta de los acentos con este
+        // interlineado. Ver el comentario en components/motion.tsx.
         const split = SplitText.create(title, {
           type: "lines",
-          mask: "lines",
           linesClass: "line++",
         });
-        gsap.set(split.lines, { yPercent: 115 });
+        gsap.set(split.lines, { yPercent: 45, opacity: 0 });
 
         gsap
           .timeline({ delay: 0.1 })
-          .to(split.lines, { yPercent: 0, duration: 1, stagger: 0.07, ease: "expo.out" }, 0)
+          .to(split.lines, { yPercent: 0, opacity: 1, duration: 1, stagger: 0.07, ease: "expo.out" }, 0)
           .to(fades, { y: 0, opacity: 1, duration: 0.7, stagger: 0.06, ease: "expo.out" }, 0.35);
       });
 

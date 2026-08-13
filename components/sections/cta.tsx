@@ -35,12 +35,15 @@ export function CallToAction({ gym }: { gym: GymProfile }) {
           </Reveal>
 
           <Reveal y={20} delay={0.2}>
-            <div className="mt-11 flex flex-wrap items-center justify-center gap-3">
+            {/* Un solo camino: WhatsApp. Se sacó el botón de llamar porque
+                hoy nadie llama a un gimnasio, y dos botones parejos reparten
+                la atención en vez de dirigirla. */}
+            <div className="mt-11 flex justify-center">
               <a
                 href={`https://wa.me/${gym.whatsapp}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2 rounded-full bg-black px-8 py-4 text-sm font-bold uppercase tracking-wide text-lime transition-transform duration-300 hover:scale-[1.03]"
+                className="group inline-flex items-center gap-2 rounded-full bg-black px-9 py-4.5 text-sm font-bold uppercase tracking-wide text-lime transition-transform duration-300 hover:scale-[1.03]"
               >
                 <MessageCircle size={17} aria-hidden />
                 Escribinos por WhatsApp
@@ -48,12 +51,6 @@ export function CallToAction({ gym }: { gym: GymProfile }) {
                   size={16}
                   className="transition-transform duration-300 group-hover:translate-x-1"
                 />
-              </a>
-              <a
-                href={`tel:${gym.phone.replace(/[^\d+]/g, "")}`}
-                className="inline-flex items-center gap-2 rounded-full border border-black/20 px-8 py-4 text-sm font-semibold uppercase tracking-wide text-black transition-colors duration-300 hover:border-black"
-              >
-                {gym.phone}
               </a>
             </div>
           </Reveal>
