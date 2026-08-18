@@ -8,6 +8,7 @@ import { Method } from "@/components/sections/method";
 import { Testimonials } from "@/components/sections/testimonials";
 import { Location } from "@/components/sections/location";
 import { CallToAction } from "@/components/sections/cta";
+import { WhatsAppFab } from "@/components/whatsapp-fab";
 import {
   getGym,
   getMethodPoints,
@@ -58,6 +59,7 @@ export default function Home() {
         <CallToAction gym={gym} />
       </main>
       <SiteFooter gym={gym} services={services} />
+      <WhatsAppFab gym={gym} />
     </>
   );
 }

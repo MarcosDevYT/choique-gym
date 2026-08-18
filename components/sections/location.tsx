@@ -83,7 +83,7 @@ export function Location({
                   <h3 className="eyebrow text-faint">Contacto</h3>
                   <a
                     href={`tel:${gym.phone.replace(/[^\d+]/g, "")}`}
-                    className="mt-2 block text-lg text-fg transition-colors hover:text-lime"
+                    className="mt-1 block py-2 text-lg text-fg transition-colors hover:text-lime"
                   >
                     {gym.phone}
                   </a>
@@ -91,7 +91,7 @@ export function Location({
                     href={gym.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-base text-muted transition-colors hover:text-lime"
+                    className="block py-2.5 text-base text-muted transition-colors hover:text-lime"
                   >
                     {gym.instagramHandle}
                   </a>

@@ -86,7 +86,9 @@ summary {
 
 /* Etiqueta chica en mayúscula, para rótulos y metadatos. */
 .eyebrow {
-  font-size: 0.6875rem;
+  /* 12px y no 11: en un teléfono 11px con mayúsculas y tracking se vuelve
+     difícil de leer, y estas etiquetas ordenan toda la página. */
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.18em;
   font-weight: 600;

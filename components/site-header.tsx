@@ -44,7 +44,7 @@ export function SiteHeader({ gym }: { gym: GymProfile }) {
         <Container className="flex h-20 items-center justify-between">
           <a
             href="#inicio"
-            className="display text-xl"
+            className="display flex h-11 items-center text-xl"
           >
             {gym.name}
             <span className="text-lime">.</span>
