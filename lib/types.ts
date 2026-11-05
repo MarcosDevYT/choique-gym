@@ -31,6 +31,8 @@ export interface GymProfile {
   reviewCount: number;
   address: string;
   addressDetail: string;
+  /** La esquina, corta: el título de la sección de ubicación. */
+  addressShort: string;
   city: string;
   region: string;
   lat: number;

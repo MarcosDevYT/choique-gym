@@ -14,7 +14,7 @@ if (typeof window !== "undefined") gsap.registerPlugin(SplitText);
 
 /**
  * Hero a dos columnas: el titular manda a la izquierda y la foto sostiene la
- * derecha, con el badge de puntuación de Google encima.
+ * derecha, con el badge de puntuación encima.
  *
  * Entra completo en una pantalla sin scrollear. La clave es que los tamaños
  * dependen del ALTO del viewport y no solo del ancho: en un monitor de 1080px

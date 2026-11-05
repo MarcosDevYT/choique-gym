@@ -11,10 +11,9 @@ import type {
 /**
  * Fuente única de verdad mientras no haya base de datos.
  *
- * Todo lo de acá es información real tomada del Instagram del gimnasio
- * (@choique.gym) y de su ficha de Google Maps. Lo que NO estaba verificado
- * está marcado con TODO: preferible dejarlo señalado a inventar un dato que
- * después haya que desmentir frente al cliente.
+ * Gimnasio ficticio: el nombre, la dirección, el teléfono, las redes, las
+ * reseñas y los números están inventados para mostrar el diseño. No
+ * corresponden a ningún negocio real.
  *
  * Cuando se conecte NeonDB, este archivo se reemplaza por `lib/queries.ts`
  * con las mismas funciones de lectura. Los componentes no se tocan.
@@ -22,32 +21,31 @@ import type {
 
 export const gym: GymProfile = {
   id: "main",
-  name: "Choique",
-  legalName: "Choique — Fitness & Gym",
+  name: "Forja",
+  legalName: "Forja — Training Club",
   tagline: "Una experiencia de entrenamiento diferente",
   heroTitle: "Entrenar\nen serio.\n*Sin vueltas.*",
   heroSubtitle:
-    "Musculación, funcional y disciplinas de combate en el corazón de Puerto Madryn. Equipamiento nuevo, profesores en sala y un lugar que da ganas de volver.",
+    "Musculación, funcional y disciplinas de combate en el corazón de Córdoba. Equipamiento nuevo, profesores en sala y un lugar que da ganas de volver.",
   about: [
-    "Choique nació con una idea simple: que entrenar no se sienta una obligación. Un espacio amplio, limpio y bien equipado, donde cada persona encuentra su ritmo — desde quien pisa un gimnasio por primera vez hasta quien entrena hace años.",
-    "Somos parte de la familia Sport Club, y eso se nota en el estándar: máquinas nuevas, mantenimiento al día y profesores en sala corrigiendo técnica, no mirando el celular.",
+    "Forja nació con una idea simple: que entrenar no se sienta una obligación. Un espacio amplio, limpio y bien equipado, donde cada persona encuentra su ritmo — desde quien pisa un gimnasio por primera vez hasta quien entrena hace años.",
+    "Somos un club independiente, armado por entrenadores, y eso se nota en el estándar: máquinas nuevas, mantenimiento al día y profesores en sala corrigiendo técnica, no mirando el celular.",
   ],
   claim: "La primera clase\nes la más difícil.\n*El resto lo hacemos fácil.*",
-  phone: "0280 435-3089",
-  whatsapp: "5492804353089",
-  instagram: "https://instagram.com/choique.gym",
-  instagramHandle: "@choique.gym",
-  followers: 4762,
-  rating: 5,
-  reviewCount: 22,
-  address: "Av. Julio Argentino Roca 1999",
-  addressDetail: "Esquina Charcas",
-  city: "Puerto Madryn",
-  region: "Chubut",
-  lat: -42.7758,
-  lng: -65.0378,
-  // TODO: confirmar el horario de apertura. Google Maps solo expone el cierre
-  // (23:00) y una reseña menciona actividades desde las 6:00.
+  phone: "0351 555-0142",
+  whatsapp: "5493515550142",
+  instagram: "https://instagram.com/forja.trainingclub",
+  instagramHandle: "@forja.trainingclub",
+  followers: 3180,
+  rating: 4.9,
+  reviewCount: 38,
+  address: "Av. Los Andes 1450",
+  addressDetail: "Esquina Las Moras",
+  addressShort: "Av. Los Andes y Las Moras",
+  city: "Córdoba",
+  region: "Córdoba",
+  lat: -31.4201,
+  lng: -64.1888,
   opensAt: "06:00",
   closesAt: "23:00",
 };
@@ -130,56 +128,52 @@ export const services: Service[] = [
   },
 ];
 
-/**
- * Reseñas reales publicadas en Google Maps. Se citan textuales y con el
- * nombre de quien las escribió: es prueba social verificable, no marketing.
- */
+/** Opiniones de ejemplo: los nombres y los textos están inventados. */
 export const testimonials: Testimonial[] = [
   {
-    id: "natalia-visintini",
-    author: "Natalia Visintini",
+    id: "lucia",
+    author: "Lucía F.",
     quote:
-      "Es un gimnasio con todo nuevo, impecable. Tenés instructores disponibles que te ayudan a corregir técnicas y una variedad de actividades súper interesante. El lugar es hermoso. ¡Espectacular!",
+      "Todo nuevo y siempre impecable. Los profes te corrigen la técnica sin que se los pidas y hay un montón de actividades para elegir. Me dio ganas de volver desde el primer día.",
     rating: 5,
-    source: "Google Maps",
+    source: "Alumna",
     active: true,
     order: 0,
   },
   {
-    id: "valentino-casasnovas",
-    author: "Valentino Casasnovas",
+    id: "tomas",
+    author: "Tomás I.",
     quote:
-      "Muy buen gimnasio, las máquinas en buen estado y si alguna se rompe el equipo no tarda en arreglarla. La limpieza es muy buena.",
+      "Las máquinas están bien cuidadas y cuando alguna falla la arreglan enseguida. Se nota que limpian todo el día.",
     rating: 5,
-    source: "Google Maps",
+    source: "Alumno",
     active: true,
     order: 1,
   },
   {
-    id: "mariana-mazzocco",
-    author: "Mariana Mazzocco",
-    quote:
-      "Gimnasio de 10. Relación precio-calidad muy buena. Grande, espacioso y limpio.",
+    id: "carolina",
+    author: "Carolina G.",
+    quote: "Un 10. Muy buena relación precio-calidad, amplio y siempre limpio.",
     rating: 5,
-    source: "Google Maps",
+    source: "Alumna",
     active: true,
     order: 2,
   },
   {
-    id: "resena-atencion",
-    author: "Reseña de Google",
-    quote: "Buen lugar, excelente atención, monitoreo constante.",
+    id: "martin",
+    author: "Martín R.",
+    quote: "Buena onda, buena atención y siempre hay alguien mirando cómo entrenás.",
     rating: 5,
-    source: "Google Maps",
+    source: "Alumno",
     active: true,
     order: 3,
   },
   {
-    id: "resena-instalaciones",
-    author: "Reseña de Google",
-    quote: "Instalaciones impecables, profes excelentes.",
+    id: "sofia",
+    author: "Sofía P.",
+    quote: "Instalaciones impecables y profes que saben.",
     rating: 5,
-    source: "Google Maps",
+    source: "Alumna",
     active: true,
     order: 4,
   },
@@ -225,11 +219,7 @@ export const features: Feature[] = [
   },
 ];
 
-/**
- * TODO: confirmar la grilla horaria real con el gimnasio. Google Maps solo
- * publica el horario de cierre, así que esto es una estructura de ejemplo
- * lista para completar con los datos verdaderos.
- */
+/** Horarios de ejemplo. */
 export const schedule: ScheduleDay[] = [
   {
     id: "semana",
@@ -251,11 +241,11 @@ export const schedule: ScheduleDay[] = [
   },
 ];
 
-/** Números de la banda lima. Todos verificables en Google o Instagram. */
+/** Números de la banda lima (de ejemplo). */
 export const stats: Stat[] = [
-  { id: "rating", value: "5.0", label: "Puntuación en Google", order: 0 },
-  { id: "resenas", value: "22", label: "Reseñas de alumnos", order: 1 },
-  { id: "comunidad", value: "4.7K", label: "En la comunidad", order: 2 },
+  { id: "rating", value: "4.9", label: "Puntuación de alumnos", order: 0 },
+  { id: "resenas", value: "38", label: "Reseñas de alumnos", order: 1 },
+  { id: "comunidad", value: "3.1K", label: "En la comunidad", order: 2 },
   { id: "disciplinas", value: "5", label: "Disciplinas", order: 3 },
 ];
 

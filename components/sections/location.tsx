@@ -23,7 +23,7 @@ export function Location({
           <p className="eyebrow mb-6 text-lime">Dónde estamos</p>
           <SplitLines>
             <h2 className="display text-[clamp(2.4rem,6vw,4.8rem)]">
-              Av. Roca y Charcas
+              {gym.addressShort}
             </h2>
           </SplitLines>
         </div>
